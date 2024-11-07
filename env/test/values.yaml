@@ -1,0 +1,11 @@
+ingress:
+  enabled: true
+  className: alb
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: myapp.salesdemo-apps.duplocloud.net
+      paths:
+        - path: /
+          pathType: ImplementationSpecific

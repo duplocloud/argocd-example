@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: &name myapp
+  namespace: &namespace duploservices-demo01
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+  labels:
+    app.kubernetes.io/name: *name
+    app.kubernetes.io/instance: test02
+    app.kubernetes.io/version: &version HEAD
+    app.kubernetes.io/part-of: &project myapp
+    app.kubernetes.io/managed-by: kubectl
+    app.kubernetes.io/component: apps
+spec:
+  project: *project
+  destination:
+    namespace: *namespace
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/duplocloud/argocd-example.git
+    path: charts/myapp
+    targetRevision: *version
+    helm:
+      releaseName: *name
+      valueFiles:
+      - ../../env/demo/values.yaml
+
