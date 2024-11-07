@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: &name myapp
+  namespace: duploservices-oteltest
+  labels:
+    app.kubernetes.io/name: *name
+    app.kubernetes.io/instance: *name
+    app.kubernetes.io/part-of: *name
+    app.kubernetes.io/component: project
+    app.kubernetes.io/managed-by: kubectl
+  annotations:
+    kubernetes.io/description: &description |
+      My cool app project
+spec:
+  description: *description
+  destinations:
+  - server: https://kubernetes.default.svc
+    namespace: "*"
+  sourceRepos:
+  - '*'
+  sourceNamespaces:
+  - '*'
+  clusterResourceWhitelist:
+  - group: "*"
+    kind: "*"
