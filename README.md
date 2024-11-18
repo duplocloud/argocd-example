@@ -26,10 +26,12 @@ kubectl apply -f project.yaml
 
 ## ArgoCD Applications
 
-Each application is defined as a Helm chart or a Kustomize overlay. 
+Each application is defined as a Helm chart or a Kustomize overlay.
 
-Deploy the demo app: 
-```sh
-kubectl apply -f env/demo/app.yaml
+Deploy the demo app:
+
+```sh {"id":"01JD0E5273T4ZBMS4T4ADV03B3"}
+kubectl apply -f env/test/app.yaml
 ```
+
 This will watch the `env/demo/values.yaml` file for changes and apply them to the cluster.

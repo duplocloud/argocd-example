@@ -19,7 +19,7 @@ spec:
     server: https://kubernetes.default.svc
   source:
     repoURL: https://github.com/duplocloud/argocd-example.git
-    path: charts/myapp
+    path: apps/myapp
     targetRevision: *version
     helm:
       releaseName: *name
