@@ -1,7 +1,8 @@
 ingress:
   enabled: true
   className: alb
-  annotations: {}
+  annotations: 
+    foo: bar
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
