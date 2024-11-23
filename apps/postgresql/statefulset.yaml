@@ -5,14 +5,14 @@ metadata:
 spec:
   selector: {}
   serviceName: postgresql
-  replicas: 1 # by default is 1
+  replicas: 1 
   template:
     spec:
       nodeSelector: {}
       terminationGracePeriodSeconds: 10
       containers:
       - name: postgresql
-        image: docker.io/postgres:13.1 # 13-alpine
+        image: postgresql
         envFrom:
         - secretRef:
             name: postgresql
@@ -30,4 +30,5 @@ spec:
       - ReadWriteOnce
       resources:
         requests:
-          storage: 5Gi
+          # updated by patching
+          storage: 1Gi

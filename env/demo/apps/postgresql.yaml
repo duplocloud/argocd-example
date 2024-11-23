@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: postgresql
+  namespace: duploservices-oteltest
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    namespace: duploservices-test02
+    server: https://kubernetes.default.svc
+  project: myapp
+  source:
+    kustomize:
+      namespace: duploservices-test02
+    path: apps/postgresql
+    repoURL: https://github.com/duplocloud/argocd-example.git
+    targetRevision: HEAD
