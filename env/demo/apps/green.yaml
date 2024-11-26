@@ -1,13 +1,13 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: &name myapp
-  namespace: &namespace duploservices-demo01
+  name: &name myapp-green
+  namespace: &namespace duploservices-demo02
   finalizers:
   - resources-finalizer.argocd.argoproj.io
   labels:
     app.kubernetes.io/name: *name
-    app.kubernetes.io/instance: test02
+    app.kubernetes.io/instance: demo02-green
     app.kubernetes.io/version: &version HEAD
     app.kubernetes.io/part-of: &project myapp
     app.kubernetes.io/managed-by: kubectl
@@ -25,4 +25,7 @@ spec:
       releaseName: *name
       valueFiles:
       - ../../env/demo/values.yaml
+      valuesObject:
+        ingress:
+          enabled: false
 
