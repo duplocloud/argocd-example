@@ -2,6 +2,7 @@ ingress:
   enabled: true
   className: alb
   annotations: {}
+    alb.ingress.kubernetes.io/target-type: ip
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
